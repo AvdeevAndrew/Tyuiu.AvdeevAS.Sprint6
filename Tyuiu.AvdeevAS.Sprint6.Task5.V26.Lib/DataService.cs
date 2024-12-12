@@ -29,12 +29,6 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.Lib
                     }
                 }
             }
-
-            return numbers.ToArray();
-        }
-
-        public double[] FilterMultiplesOfFive(double[] numbers)
-        {
             var multiplesOfFive = new List<double>();
 
             foreach (var number in numbers)
@@ -45,8 +39,9 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.Lib
                 }
             }
 
-            return multiplesOfFive.ToArray();
+            return numbers.ToArray();
         }
     }
 }
 
+        
