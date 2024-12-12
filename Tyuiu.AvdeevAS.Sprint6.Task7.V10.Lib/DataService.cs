@@ -39,7 +39,10 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Lib
                 string[] values = lines[i].Split(',', ';');
                 for (int j = 0; j < cols; j++)
                 {
-                    
+                    if (!int.TryParse(values[j], NumberStyles.Integer, CultureInfo.InvariantCulture, out int value))
+                    {
+                        throw new FormatException($"Некорректное значение в строке {i + 1}, столбце {j + 1}.");
+                    }
 
                     matrix[i, j] = Convert.ToInt32(values[j]);
                 }
