@@ -10,56 +10,34 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Lib
     {
         public int[,] GetMatrix(string path)
         {
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException("Файл не найден.", path);
-            }
+            string fileData = File.ReadAllText(path);
+            string[] lines = fileData.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            int rows = lines.Length;
+            int cols = lines[0].Split(';').Length;
+            int[,] mtrx = new int[rows, cols];
 
-            var lines = new List<string>();
-            using (var reader = new StreamReader(path))
+            for (int r = 0; r < rows; r++)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                string[] line_r = lines[r].Split(';');
+                for (int c = 0; c < cols; c++)
                 {
-                    lines.Add(line);
+                    mtrx[r, c] = Convert.ToInt32(line_r[c]);
                 }
             }
-
-            if (lines.Count == 0)
-            {
-                throw new InvalidOperationException("Файл пуст.");
-            }
-
-            int rows = lines.Count;
-            int cols = lines[0].Split(',',';').Length;
-            int[,] matrix = new int[rows, cols];
-
-            for (int i = 0; i < rows; i++)
-            {
-                string[] values = lines[i].Split(',', ';');
-                for (int j = 0; j < cols; j++)
-                {
-                    if (!int.TryParse(values[j], NumberStyles.Integer, CultureInfo.InvariantCulture, out int value))
-                    {
-                        throw new FormatException($"Некорректное значение в строке {i + 1}, столбце {j + 1}.");
-                    }
-
-                    matrix[i, j] = Convert.ToInt32(values[j]);
-                }
-            }
+                       
 
             if (rows >= 5)
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    if (matrix[4, j] >= 5 && matrix[4, j] <= 10)
+                    if (mtrx[4, j] >= 5 && mtrx[4, j] <= 10)
                     {
-                        matrix[4, j] = 0;
+                        mtrx[4, j] = 0;
                     }
                 }
             }
 
-            return matrix;
+            return mtrx;
         }
     }
 }
