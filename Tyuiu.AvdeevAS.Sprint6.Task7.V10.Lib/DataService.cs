@@ -24,7 +24,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Lib
                     mtrx[r, c] = Convert.ToInt32(line_r[c]);
                 }
             }
-                       
+                       //
 
             if (rows >= 5)
             {
