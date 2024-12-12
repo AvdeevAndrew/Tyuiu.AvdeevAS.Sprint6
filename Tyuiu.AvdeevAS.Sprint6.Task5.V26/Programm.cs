@@ -10,7 +10,6 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.App
     {
         private DataGridView dataGridView;
         private Button loadButton;
-        private Button filterButton;
         private Label resultLabel;
 
         public MainForm()
@@ -45,15 +44,6 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.App
             loadButton.Click += LoadButton_Click;
             this.Controls.Add(loadButton);
 
-            filterButton = new Button
-            {
-                Text = "Фильтровать кратные 5",
-                Top = 350,
-                Left = 150
-            };
-            filterButton.Click += FilterButton_Click;
-            this.Controls.Add(filterButton);
-
             resultLabel = new Label
             {
                 Text = "Результат: ",
@@ -83,28 +73,9 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.App
                     {
                         dataGridView.Rows.Add(number);
                     }
+
+                    resultLabel.Text = $"Результат: {string.Join(", ", data)}";
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void FilterButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var service = new DataService();
-                double[] numbers = dataGridView.Rows
-                    .Cast<DataGridViewRow>()
-                    .Where(row => row.Cells[0].Value != null)
-                    .Select(row => Convert.ToDouble(row.Cells[0].Value))
-                    .ToArray();
-
-                double[] filtered = service.FilterMultiplesOfFive(numbers);
-
-                resultLabel.Text = $"Результат: {string.Join(", ", filtered)}";
             }
             catch (Exception ex)
             {

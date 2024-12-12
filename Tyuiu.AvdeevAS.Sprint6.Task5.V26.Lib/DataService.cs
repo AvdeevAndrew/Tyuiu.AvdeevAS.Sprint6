@@ -1,5 +1,4 @@
-﻿// Library Code
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -16,7 +15,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.Lib
                 throw new FileNotFoundException("Файл не найден.", path);
             }
 
-            var numbers = new List<double>();
+            var multiplesOfFive = new List<double>();
 
             using (var reader = new StreamReader(path))
             {
@@ -25,23 +24,16 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.Lib
                 {
                     if (double.TryParse(line, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
                     {
-                        numbers.Add(Math.Round(number, 3, MidpointRounding.AwayFromZero));
+                        number = Math.Round(number, 3, MidpointRounding.AwayFromZero);
+                        if (Math.Abs(number % 5) < 1e-10)
+                        {
+                            multiplesOfFive.Add(number);
+                        }
                     }
                 }
             }
-            var multiplesOfFive = new List<double>();
 
-            foreach (var number in numbers)
-            {
-                if (Math.Abs(number % 5) < 1e-10)
-                {
-                    multiplesOfFive.Add(number);
-                }
-            }
-
-            return numbers.ToArray();
+            return multiplesOfFive.ToArray();
         }
     }
 }
-
-        

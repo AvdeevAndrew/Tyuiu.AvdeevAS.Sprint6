@@ -13,30 +13,16 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.Tests
             // Arrange
             var service = new DataService();
             string filePath = Path.GetTempFileName();
-            File.WriteAllLines(filePath, new[] { "5.123", "10", "15.456", "-20.5" });
+            File.WriteAllLines(filePath, new[] { "5.000", "10", "15.555", "-20.0", "12.3" });
 
             // Act
             double[] result = service.LoadFromDataFile(filePath);
 
             // Assert
-            CollectionAssert.AreEqual(new[] { 5.123, 10, 15.456, -20.5 }, result);
+            CollectionAssert.AreEqual(new[] { 5.0, 10.0, -20.0 }, result);
 
             // Cleanup
             File.Delete(filePath);
-        }
-
-        [TestMethod]
-        public void FilterMultiplesOfFive_ValidData_ReturnsCorrectFilteredData()
-        {
-            // Arrange
-            var service = new DataService();
-            double[] input = { 5, 10.123, 15, 7.5, -20 };
-
-            // Act
-            double[] result = service.FilterMultiplesOfFive(input);
-
-            // Assert
-            CollectionAssert.AreEqual(new[] { 5, 15, -20 }, result);
         }
     }
 }
