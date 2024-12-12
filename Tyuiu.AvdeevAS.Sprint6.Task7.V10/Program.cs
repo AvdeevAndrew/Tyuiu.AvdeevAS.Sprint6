@@ -126,7 +126,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.App
                             var values = row.Cells.Cast<DataGridViewCell>()
                                 .Select(cell => cell.Value?.ToString() ?? "")
                                 .ToArray();
-                            writer.WriteLine(string.Join(",", values));
+                            writer.WriteLine(string.Join(";", values));
                         }
                     }
 
