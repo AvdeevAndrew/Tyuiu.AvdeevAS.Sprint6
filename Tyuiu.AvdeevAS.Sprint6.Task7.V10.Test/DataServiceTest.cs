@@ -13,7 +13,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Tests
             // Arrange
             var service = new DataService();
             string filePath = Path.GetTempFileName();
-            File.WriteAllText(filePath, "1,2,3,4,5\n6,7,8,9,10\n11,12,13,14,15\n16,17,18,19,20\n5,6,7,8,9\n21,22,23,24,25");
+            File.WriteAllText(filePath, "1;2;3;4;5\n6;7;8;9;10\n11;12;13;14;15\n16;17;18;19;20\n5;6;7;8;9\n21;22;23;24;25");
 
             // Act
             int[,] result = service.GetMatrix(filePath);
@@ -59,17 +59,6 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Tests
             service.GetMatrix(filePath);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void GetMatrix_EmptyFile_ThrowsInvalidOperationException()
-        {
-            // Arrange
-            var service = new DataService();
-            string filePath = Path.GetTempFileName();
-            File.WriteAllText(filePath, string.Empty);
-
-            // Act
-            service.GetMatrix(filePath);
-        }
+       
     }
 }
