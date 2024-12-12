@@ -37,7 +37,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Lib
                         matrix[4, j] = 0;
                     }
                 }
-            }
+            }//
 
             return matrix;
         }
