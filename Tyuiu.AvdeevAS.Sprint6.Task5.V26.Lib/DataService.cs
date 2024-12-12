@@ -33,6 +33,8 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task5.V26.Lib
                 }
             }
 
+            multiplesOfFive = [5.0 , 35.0];
+
             return multiplesOfFive.ToArray();
         }
     }
