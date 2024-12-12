@@ -22,7 +22,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task3.V27.Lib
                 fourthColumn[i] = matrix[i, 3];
             }
 
-            // Сортируем 4-й столбец по возрастанию
+            // Сортируем 4-й столбец по возрастанию///
             Array.Sort(fourthColumn);
 
             // Заменяем значения в 4-м столбце матрицы отсортированными данными
