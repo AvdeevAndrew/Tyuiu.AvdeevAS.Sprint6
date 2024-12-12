@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Library Code
+using System;
 using tyuiu.cources.programming.interfaces.Sprint6;
 
 namespace Tyuiu.AvdeevAS.Sprint6.Task3.V27.Lib
@@ -13,29 +14,21 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task3.V27.Lib
             }
 
             int rows = matrix.GetLength(0);
-            int cols = matrix.GetLength(1);
 
-            // Копируем строки матрицы во временный массив для сортировки
-            int[][] tempArray = new int[rows][];
+            // Извлекаем 4-й столбец в отдельный массив
+            int[] fourthColumn = new int[rows];
             for (int i = 0; i < rows; i++)
             {
-                tempArray[i] = new int[cols];
-                for (int j = 0; j < cols; j++)
-                {
-                    tempArray[i][j] = matrix[i, j];
-                }
+                fourthColumn[i] = matrix[i, 3];
             }
 
-            // Сортировка строк по четвертому столбцу (возрастание)
-           // Array.Sort(tempArray, (row1, row2) => row1[3].CompareTo(row2[3]));
+            // Сортируем 4-й столбец по возрастанию
+            Array.Sort(fourthColumn);
 
-            // Запись обратно в матрицу
+            // Заменяем значения в 4-м столбце матрицы отсортированными данными
             for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < cols; j++)
-                {
-                    matrix[i, j] = tempArray[i][j];
-                }
+                matrix[i, 3] = fourthColumn[i];
             }
 
             return matrix;
