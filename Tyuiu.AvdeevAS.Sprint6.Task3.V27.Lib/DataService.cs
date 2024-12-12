@@ -1,4 +1,6 @@
-﻿using tyuiu.cources.programming.interfaces.Sprint6;
+﻿using System;
+using tyuiu.cources.programming.interfaces.Sprint6;
+
 namespace Tyuiu.AvdeevAS.Sprint6.Task3.V27.Lib
 {
     public class DataService : ISprint6Task3V27
@@ -24,7 +26,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task3.V27.Lib
                 }
             }
 
-            // Сортировка строк по четвертому столбцу
+            // Сортировка строк по четвертому столбцу (возрастание)
             Array.Sort(tempArray, (row1, row2) => row1[3].CompareTo(row2[3]));
 
             // Запись обратно в матрицу
