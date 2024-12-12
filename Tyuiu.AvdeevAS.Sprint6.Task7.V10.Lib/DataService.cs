@@ -10,34 +10,36 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Lib
     {
         public int[,] GetMatrix(string path)
         {
-            string fileData = File.ReadAllText(path);
-            string[] lines = fileData.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-            int rows = lines.Length;
-            int cols = lines[0].Split(';').Length;
-            int[,] mtrx = new int[rows, cols];
+            string[] lines = File.ReadAllText(path).Replace('\n', '\r').Split('\r', StringSplitOptions.RemoveEmptyEntries);
 
-            for (int r = 0; r < rows; r++)
+            int rows = lines.Length;
+
+
+            int cols = lines[0].Split(';').Length;
+            int[,] matrix = new int[rows, cols];
+
+
+            for (int i = 0; i < rows; i++)
             {
-                string[] line_r = lines[r].Split(';');
-                for (int c = 0; c < cols; c++)
+                string[] values = lines[i].Split(';');
+                for (int j = 0; j < cols; j++)
                 {
-                    mtrx[r, c] = Convert.ToInt32(line_r[c]);
+                    matrix[i, j] = Convert.ToInt32(values[j]);
                 }
             }
-                       //
 
-            if (rows >= 5)
+            if (rows > 4)
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    if (mtrx[4, j] >= 5 && mtrx[4, j] <= 10)
+                    if (matrix[4, j] >= 5 && matrix[4, j] < 10)
                     {
-                        mtrx[4, j] = 0;
+                        matrix[4, j] = 0;
                     }
                 }
             }
 
-            return mtrx;
+            return matrix;
         }
     }
 }
