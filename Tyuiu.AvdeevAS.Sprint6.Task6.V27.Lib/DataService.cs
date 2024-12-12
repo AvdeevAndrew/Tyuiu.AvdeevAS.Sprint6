@@ -24,7 +24,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task6.V27.Lib
                     string[] words = line.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (var word in words)
                     {
-                        if (word.Contains("Н") || word.Contains("н"))
+                        if (word.Contains("H") || word.Contains("H"))
                         {
                             wordsWithH.Add(word);
                         }
