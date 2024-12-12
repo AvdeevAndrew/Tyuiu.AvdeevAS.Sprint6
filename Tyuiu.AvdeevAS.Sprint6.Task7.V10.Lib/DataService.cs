@@ -52,7 +52,7 @@ namespace Tyuiu.AvdeevAS.Sprint6.Task7.V10.Lib
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    if (matrix[4, j] >= 5 && matrix[4, j] <= 10)
+                    if (matrix[4, j] >= 5 && matrix[4, j] < 10)
                     {
                         matrix[4, j] = 0;
                     }
